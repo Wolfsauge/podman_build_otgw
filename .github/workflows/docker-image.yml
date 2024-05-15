@@ -1,13 +1,10 @@
 name: Docker Image CI
 
 on:
-  # push:
-  #   branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
   push:
+    branches: [ "main" ]
     paths:
-      - 'oobabooga-tgw-latestx.txt'
+      - 'oobabooga-tgw-latest.txt'
 
 jobs:
 
