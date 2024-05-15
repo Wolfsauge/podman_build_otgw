@@ -14,5 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Docker login
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag oobabooga:$(date +%s)
+    - name: Push the Docker image
+      run: docker push nschle/oobabooga:gha-build
