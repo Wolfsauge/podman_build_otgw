@@ -92,7 +92,7 @@ COPY --chmod=755 run-text-generation-webui.sh /root/bin/run-text-generation-webu
 
 # Copy build code to the container
 RUN mkdir -p /workspace/text-generation-webui/docker/RunPod
-COPY Dockerfile docker-compose.yml /workspace/text-generation-webui/docker/RunPod
+COPY Dockerfile docker-compose.yaml /workspace/text-generation-webui/docker/RunPod
 
 # Configure tldr
 RUN mkdir -p /root/.local/share/tldr && tldr -u
