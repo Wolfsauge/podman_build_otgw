@@ -1,0 +1,23 @@
+services:
+  oobabooga:
+    build:
+      args:
+      - DO_PULL=true
+      context: /home/ns/GitHub/Playground/podman/podman_build_otgw
+      dockerfile: ./Dockerfile
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - capabilities:
+            - gpu
+            count: all
+            driver: nvidia
+    environment:
+      NAME: oobabooga
+      NVIDIA_VISIBLE_DEVICES: all
+    ports:
+    - 7860:7860
+    - 5000:5000
+version: '3.8'
+
