@@ -14,13 +14,18 @@ The build process involves cloning the repo, navigating to the directory, and ru
 
 The resulting image can be used locally or with [RunPod](https://www.runpod.io/), as shown in this [example template](https://www.runpod.io/console/explore/ktqdbmxoja).
 
-## Important Notice
+## Licensing
 
-When using the image created, please be aware that it is intended for testing purposes only and does not include any authentication or authorization mechanisms.
+The scripts in this repository create a customized Ubuntu base image by installing updates and additional software, and then install oobabooga's web app on top of it. This process is done solely to create a tailored infrastructure for testing purposes, and does not constitute the creation of a derivative work.
 
-This means that the web application in this image is exposed to the network without any security measures in place. Therefore, I strongly advise against using this image in production or with sensitive real data.
+## Warning
+
+The resulting image is designed for testing purposes only and may not be suitable for production use without additional security measures. While SSH access is secured with RunPod, access to the TCP ports 7860 and 5000 is not restricted. It is the user's responsibility to implement appropriate access controls to ensure the security of their data.
+
+By using this image, you acknowledge that you understand the potential risks and limitations, and you will take necessary steps to secure your environment.
 
 ## References
 
-* scripts were taken from [TheBlokeAI/dockerLLM](https://github.com/TheBlokeAI/dockerLLM)
+* [oobabooga/text-generation-webui](https://github.com/oobabooga/text-generation-webui) on GitHub
+* the scripts were taken from [TheBlokeAI/dockerLLM](https://github.com/TheBlokeAI/dockerLLM) on GitHub
 * further information can be found in the [RunPod Documentation](https://docs.runpod.io/)
