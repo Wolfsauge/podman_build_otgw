@@ -1,7 +1,7 @@
 name: Check release tag
 on:
   schedule:
-    - cron:  '0,10,20,30,40,50 * * * *'
+    - cron:  '* * * * *'
 jobs:
   get-version:
     runs-on: ubuntu-latest
