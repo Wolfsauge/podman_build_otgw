@@ -16,7 +16,7 @@ The resulting image can be used locally or with [RunPod](https://www.runpod.io/)
 
 ## Licensing
 
-The scripts in this repository create a customized Ubuntu base image by installing updates and additional software, and then install oobabooga's web app on top of it. This process is done solely to create a tailored infrastructure for testing purposes, and does not constitute the creation of a derivative work.
+The contents of this repository do not constitute the creation of derivative work. For details, see the LICENSE file.
 
 ## Warning
 
