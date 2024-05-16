@@ -9,7 +9,7 @@ ENV DO_PULL $DO_PULL
 # Set the working directory in the container
 WORKDIR /workspace/text-generation-webui
 
-# Install system dependencies
+# Install additional software, remove any SSH host keys
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
@@ -44,10 +44,10 @@ RUN apt-get install -y locales && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
 
-# Upgrade
+# Upgrade all installed packages
 RUN apt-get upgrade -y
 
-# Change global Python
+# Change global Python settings for convenience
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 \
     && apt-get install -y --no-install-recommends python-is-python3 \
     && rm -rf /var/lib/apt/lists/* 
@@ -55,11 +55,11 @@ RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 # Upgrade pip
 RUN pip3 install --no-cache-dir --upgrade pip
 
-# Set up git to support LFS, and to cache credentials; useful for Huggingface Hub
+# Set up git to support LFS, and to cache credentials
 RUN git config --global credential.helper cache && \
     git lfs install
 
-# Update repo
+# Clone oobabooga/text-generation-webui repo
 RUN if [ ${DO_PULL} ]; then \
     git config --global init.defaultBranch master && \
     git init && \
@@ -77,13 +77,13 @@ N
 EOF
 RUN sed -i 's|^        #launch_webui()|        launch_webui()|g' one_click.py
 
-# Make port 7860, 5000 and 22 available to the world outside this container
+# Make port 7860, 5000 and 22 available on the network
 EXPOSE 7860 5000 22
 
 # Install Huggingface tools
 RUN pip3 install --no-cache-dir hf_transfer huggingface-hub[cli]
 
-# RunPod specific settings
+# Install custom supplemental scripts and configurations
 WORKDIR /
 COPY --chmod=755 runpod.sh /runpod.sh
 COPY --chmod=755 restart.sh /root/bin/restart.sh
