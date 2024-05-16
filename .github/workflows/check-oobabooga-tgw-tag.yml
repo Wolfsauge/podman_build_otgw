@@ -2,6 +2,10 @@ name: Check release tag
 on:
   schedule:
     - cron:  '* * * * *'
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'oobabooga-tgw-latest.txt'
 jobs:
   get-version:
     runs-on: ubuntu-latest
