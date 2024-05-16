@@ -20,7 +20,7 @@ The contents of this repository do not constitute the creation of derivative wor
 
 ## Warning
 
-The resulting image is designed for testing purposes only and may not be suitable for production use without additional security measures. While SSH access is secured with RunPod, access to the TCP ports 7860 and 5000 is not restricted. It is the user's responsibility to implement appropriate access controls to ensure the security of their data.
+The resulting image is designed for testing purposes only and may not be suitable for production use without additional security measures. Access to the TCP ports 7860 and 5000 is not restricted. It is the user's responsibility to implement appropriate access controls to ensure the security of their data.
 
 By using this image, you acknowledge that you understand the potential risks and limitations, and you will take necessary steps to secure your environment.
 
