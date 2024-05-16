@@ -2,10 +2,6 @@ name: Check release tag
 on:
   schedule:
     - cron:  "4,14,24,34,44,54 * * * *"
-  # push:
-  #   branches: [ "main" ]
-  #   paths:
-  #     - 'test-trigger.txt'
 jobs:
   get-version:
     runs-on: ubuntu-latest
