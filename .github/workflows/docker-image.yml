@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'oobabooga-tgw-latestx.txt'
+      - 'oobabooga-tgw-latest.txt'
 
 jobs:
 
