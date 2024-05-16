@@ -1,7 +1,7 @@
 name: Check release tag
 on:
   schedule:
-    - cron:  "58,5,10,15 * * * *"
+    - cron:  "4,14,24,34,44,54 * * * *"
   # push:
   #   branches: [ "main" ]
   #   paths:
