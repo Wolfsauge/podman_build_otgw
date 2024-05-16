@@ -2,6 +2,10 @@ name: Check release tag
 on:
   schedule:
     - cron:  '* * * * *'
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'oobabooga-tgw-latest.txt'
 jobs:
   get-version:
     runs-on: ubuntu-latest
@@ -14,9 +18,9 @@ jobs:
           curl -sL https://api.github.com/repos/oobabooga/text-generation-webui/releases/latest | \
           jq -r ".tag_name" > oobabooga-tgw-latest.txt
       - name: Check for modified files
-        run: echo "modified=$([ -z "`git status --porcelain`" ] && echo false || echo true)" >> $GITHUB_ENV
+        run: echo "modified=$([ -z `git status --porcelain` ] && echo false || echo true)" >> $GITHUB_ENV
       - name: Commit latest release tag
-        if: ${{ env.GITHUB_OUTPUT }} == "true"
+        if: ${{ env.modified }} == "true"
         run: |
           git config --global user.name 'Wolfsauge'
           git config --global user.email 'no@email'
