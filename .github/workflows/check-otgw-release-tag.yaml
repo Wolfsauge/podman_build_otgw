@@ -1,7 +1,7 @@
 name: Check release tag
 on:
   schedule:
-    - cron:  "7,22,37,52 * * * *"
+    - cron:  "22,52 * * * *"
 
 jobs:
   get-version:
