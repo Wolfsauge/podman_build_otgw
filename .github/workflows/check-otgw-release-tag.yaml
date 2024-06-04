@@ -15,7 +15,6 @@ jobs:
           curl -sL https://api.github.com/repos/oobabooga/text-generation-webui/releases/latest | \
           jq -r ".tag_name" > oobabooga-tgw-latest.txt
       - name: Check for null response
-        if: ${{ github.status == 'success' }}
         run: |
           if grep -qE '^null$' oobabooga-tgw-latest.txt; then
             exit 1
