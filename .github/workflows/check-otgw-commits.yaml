@@ -1,4 +1,4 @@
-name: Check release tag
+name: Check for new commits
 on:
   schedule:
     - cron:  "22,52 * * * *"
@@ -10,10 +10,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
-      - name: Fetch release tag
+      - name: Fetch latest commit checksum from GitHub API
         run: |
-          curl -sL https://api.github.com/repos/oobabooga/text-generation-webui/releases/latest | \
-          jq -r ".tag_name" > oobabooga-tgw-latest.txt
+          curl -sL https://api.github.com/repos/oobabooga/text-generation-webui/commits | \
+          jq ".[0] | .sha" > oobabooga-tgw-latest.txt
       - name: Check for null response
         run: |
           if grep -qE '^null$' oobabooga-tgw-latest.txt; then
